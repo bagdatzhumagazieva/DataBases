@@ -1,0 +1,57 @@
+create  database  lab1;
+
+create  table  countries(
+  country_id serial primary key ,
+  country_name varchar(30),
+  region_id integer,
+  population integer
+);
+select  *from  countries;
+
+ insert  into countries
+ values (default ,'Kazakhstan',2,10000000);
+
+    insert  into countries(country_id,country_name)
+    values (default ,'China');
+
+    update  countries set region_id=null ;
+
+insert into countries (country_name, region_id, population,country_id)
+values ('RS',52,150000,80 );
+values ('Itally',42,56200,45 );
+values ('Arabic',12,230000,14 );
+select  * from  countries;
+
+    alter  table  countries
+        alter column country_name set default 'Kazakhstan';
+insert into countries
+values (default ,default ,96,1254000)
+
+  insert into countries(country_name, country_id)
+  values ('Bagdad',23);
+
+  create table coutries_new(
+    LIKE countries
+  );
+
+  insert into coutries_new
+  select * from  countries;
+
+    update countries_new set region_id=1
+where region_id is null ;
+
+  select * from  countries_new;
+
+  update coutries_new set population=population+(population*0.1)
+returning country_name , population as "New Population";
+
+  delete  from countries
+where population<100000
+
+    delete from coutries_new
+as cn using  countries as co
+ where       cn.country_id=co.country_id
+returning *;
+
+  delete  from countries
+returning *;
